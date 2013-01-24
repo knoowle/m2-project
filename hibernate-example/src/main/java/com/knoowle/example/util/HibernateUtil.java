@@ -1,17 +1,16 @@
 package com.knoowle.example.util;
 
-    import org.hibernate.SessionFactory;
-    import org.hibernate.cfg.Configuration;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
-    public class HibernateUtil {
-        private static SessionFactory sessionFactory;
+public class HibernateUtil {
+    private static SessionFactory sessionFactory;
 
-        static {
-            sessionFactory = new Configuration().configure().buildSessionFactory();
-        }
+    static {
+        sessionFactory = new Configuration().configure().buildSessionFactory();
+    }
 
-        public static SessionFactory getSessionFactory() {
-            return sessionFactory;
-        }
-
+    public static SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
 }

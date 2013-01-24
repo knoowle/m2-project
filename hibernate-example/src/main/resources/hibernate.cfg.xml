@@ -9,9 +9,11 @@
         <property name="hibernate.connection.password">postgres</property>
 
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.current_session_context_class">thread</property>
 
         <mapping resource="com/knoowle/example/model/Account.hbm.xml"/>
+        <mapping resource="com/knoowle/example/model/Event.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

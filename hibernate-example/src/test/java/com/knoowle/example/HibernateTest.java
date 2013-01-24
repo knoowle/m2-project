@@ -1,6 +1,7 @@
 package com.knoowle.example;
 
 import com.knoowle.example.model.Account;
+import com.knoowle.example.model.Event;
 import com.knoowle.example.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,7 +25,7 @@ public class HibernateTest {
 
     @Test
     public void testAddAccount() {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         Transaction trans = session.beginTransaction();
         Account account = new Account();
         account.setName("john");
@@ -32,6 +33,19 @@ public class HibernateTest {
         session.save(account);
         trans.commit();
         System.out.println(account.getId());
+    }
+
+    @Test
+    public void testAddEvent() {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction trans = session.beginTransaction();
+        Account account = (Account) session.load(Account.class, new Long(1));
+        Event event = new Event();
+        event.setAuthor(account);
+        event.setDescription("desc");
+        event.setName("name");
+        session.save(event);
+        trans.commit();
     }
 
 }

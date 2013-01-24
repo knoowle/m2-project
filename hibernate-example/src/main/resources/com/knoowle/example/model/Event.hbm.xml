@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.knoowle.example.model">
+    <class name="Event" table="t_event">
+        <id name="id" column="event_id">
+            <generator class="native" />
+        </id>
+        <property name="name" column="event_name" />
+        <many-to-one name="author" column="author_id" />
+        <property name="description" />
+    </class>
+</hibernate-mapping>
