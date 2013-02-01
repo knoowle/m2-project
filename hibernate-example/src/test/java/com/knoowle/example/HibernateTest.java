@@ -2,6 +2,8 @@ package com.knoowle.example;
 
 import com.knoowle.example.model.Account;
 import com.knoowle.example.model.Event;
+import com.knoowle.example.service.IAccountService;
+import com.knoowle.example.service.impl.AccountService;
 import com.knoowle.example.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,6 +11,9 @@ import org.hibernate.Transaction;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class HibernateTest {
     private static SessionFactory sessionFactory;
@@ -48,4 +53,21 @@ public class HibernateTest {
         trans.commit();
     }
 
+    @Test
+    public void testAccountService() {
+        IAccountService service = new AccountService();
+        Account account = new Account();
+        account.setName("john1");
+        account.setPassword("jimgreen1");
+        service.addAccount(account);
+
+        List accounts = service.getAccountList(100);
+
+        Iterator iter = accounts.iterator();
+
+        while (iter.hasNext()) {
+            Account a = (Account) iter.next();
+            System.out.println(a.getId());
+        }
+    }
 }
